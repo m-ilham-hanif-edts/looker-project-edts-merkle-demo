@@ -10,6 +10,7 @@ view: daily_trx_trend_value__model {
     ) AS
     SELECT dt, value FROM ${daily_trx_trend_value__training_data.SQL_TABLE_NAME};;
     # interval_trigger: "1 minutes"
-    persist_for: "1 minutes"
+    # persist_for: "1 minutes"
+    datagroup_trigger: daily_trx_trend_value__model__datagroup
   }
 }
