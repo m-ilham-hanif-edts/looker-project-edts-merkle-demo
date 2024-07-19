@@ -2,12 +2,17 @@
 connection: "edts-merkle-demo"
 
 # Datagroup
-datagroup: daily_trx_trend_value__model__datagroup {
-  interval_trigger: "30 seconds"
+datagroup: datagroup__trigger_10s {
+  sql_trigger: SELECT "datagroup__trigger_10s";;
   max_cache_age: "10 seconds"
 }
+persist_with: datagroup__trigger_10s
 
-persist_with: daily_trx_trend_value__model__datagroup
+datagroup: datagroup__trigger_daily {
+  sql_trigger: SELECT "datagroup__trigger_daily";;
+  max_cache_age: "24 hours"
+}
+persist_with: datagroup__trigger_daily
 
 # Explore (data model)
 include: "/views/*.view.lkml"                # include all views in the views/ folder in this project
