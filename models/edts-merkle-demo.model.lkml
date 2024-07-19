@@ -7,7 +7,7 @@ datagroup: datagroup__daily_trx_trend_value__model {
   interval_trigger: "60 seconds"
   # sql_trigger: SELECT max(dt) from `ml.daily_trx_trend_value`;;
   label: "Re"
-  description: "Recreate table when newer date is available, or every 60s."
+  description: "Recreate table every 60s."
 }
 persist_with: datagroup__daily_trx_trend_value__model
 
