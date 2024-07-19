@@ -3,8 +3,9 @@ connection: "edts-merkle-demo"
 
 # Datagroup
 datagroup: datagroup__daily_trx_trend_value__model {
-  # sql_trigger: SELECT max(dt) from `ml.daily_trx_trend_value`;;
+  max_cache_age: "24 hours"
   interval_trigger: "60 seconds"
+  # sql_trigger: SELECT max(dt) from `ml.daily_trx_trend_value`;;
   label: "Re"
   description: "Recreate table when newer date is available, or every 60s."
 }
