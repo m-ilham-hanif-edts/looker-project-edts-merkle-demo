@@ -4,7 +4,7 @@ connection: "edts-merkle-demo"
 # Datagroup
 datagroup: daily_trx_trend_value__model__datagroup {
   interval_trigger: "30 seconds"
-  max_cache_age: "1 hour"
+  max_cache_age: "10 seconds"
 }
 
 persist_with: daily_trx_trend_value__model__datagroup
