@@ -2,6 +2,9 @@
 connection: "edts-merkle-demo"
 
 # Datagroup
+# Set max_cache_age to 0 minutes, with PDT table refreshed every 10 minutes.
+# If max_cache_age > interval_trigger, then whenever a new PDT table is created, it wont refer to
+#  the newest table. Instead, it will wait until cache age expired before using the new table.
 datagroup: datagroup__refresh_every_10min {
   max_cache_age: "0 minutes"
   interval_trigger: "10 minutes"
@@ -15,14 +18,7 @@ explore: daily_trx_trend_value {
   from: daily_trx_trend_value
 }
 
-explore: daily_trx_trend_value__training_data {
-  from: daily_trx_trend_value__training_data
-}
-
-explore: daily_trx_trend_value__validation_data {
-  from: daily_trx_trend_value__validation_data
-}
-
 explore: daily_trx_trend_value__prediction_result {
+  persist_with: datagroup__refresh_every_10min
   from: daily_trx_trend_value__prediction_result
 }
