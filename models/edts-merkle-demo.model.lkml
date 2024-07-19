@@ -5,7 +5,6 @@ connection: "edts-merkle-demo"
 datagroup: datagroup__refresh_every_10min {
   max_cache_age: "1 minutes"
   interval_trigger: "10 minutes"
-  label: "[Datagroup] Refresh Every 10min"
   description: "This datagroup will refresh all connected table every 10m."
 }
 
