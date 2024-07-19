@@ -9,6 +9,7 @@ view: daily_trx_trend_value__model {
         input_label_cols = ['value']
     ) AS
     SELECT dt, value FROM ${daily_trx_trend_value__training_data.SQL_TABLE_NAME};;
-    interval_trigger: "1 minutes"
+    # interval_trigger: "1 minutes"
+    persist_for: "1 minutes"
   }
 }
