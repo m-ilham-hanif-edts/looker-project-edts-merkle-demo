@@ -5,7 +5,7 @@ view: daily_trx_trend_value__training_data {
       column: dt {}
       column: value {}
       filters: [
-        daily_trx_trend_value__dataset.dt: "before 2019/01/01"
+        daily_trx_trend_value__dataset.dt: "before 2019/09/01"
       ]
     }
   }
