@@ -1,69 +1,40 @@
 view: daily_trx_trend_value__evaluation_result {
-  # # You can specify the table name if it's different from the view name:
-  # sql_table_name: my_schema_name.tester ;;
-  #
-  # # Define your dimensions and measures here, like this:
-  # dimension: user_id {
-  #   description: "Unique ID for each user that has ordered"
-  #   type: number
-  #   sql: ${TABLE}.user_id ;;
-  # }
-  #
-  # dimension: lifetime_orders {
-  #   description: "The total number of orders for each user"
-  #   type: number
-  #   sql: ${TABLE}.lifetime_orders ;;
-  # }
-  #
-  # dimension_group: most_recent_purchase {
-  #   description: "The date when each user last ordered"
-  #   type: time
-  #   timeframes: [date, week, month, year]
-  #   sql: ${TABLE}.most_recent_purchase_at ;;
-  # }
-  #
-  # measure: total_lifetime_orders {
-  #   description: "Use this for counting lifetime orders across many users"
-  #   type: sum
-  #   sql: ${lifetime_orders} ;;
-  # }
-}
+  derived_table: {
+    sql:
+    SELECT * FROM ml.EVALUATE(
+      MODEL ${daily_trx_trend_value__model.SQL_TABLE_NAME}, (
+        SELECT * FROM ${daily_trx_trend_value__validation_data.SQL_TABLE_NAME}
+      )
+    );;
+  }
 
-# view: daily_trx_trend_value__evaluation_result {
-#   # Or, you could make this view a derived table, like this:
-#   derived_table: {
-#     sql: SELECT
-#         user_id as user_id
-#         , COUNT(*) as lifetime_orders
-#         , MAX(orders.created_at) as most_recent_purchase_at
-#       FROM orders
-#       GROUP BY user_id
-#       ;;
-#   }
-#
-#   # Define your dimensions and measures here, like this:
-#   dimension: user_id {
-#     description: "Unique ID for each user that has ordered"
-#     type: number
-#     sql: ${TABLE}.user_id ;;
-#   }
-#
-#   dimension: lifetime_orders {
-#     description: "The total number of orders for each user"
-#     type: number
-#     sql: ${TABLE}.lifetime_orders ;;
-#   }
-#
-#   dimension_group: most_recent_purchase {
-#     description: "The date when each user last ordered"
-#     type: time
-#     timeframes: [date, week, month, year]
-#     sql: ${TABLE}.most_recent_purchase_at ;;
-#   }
-#
-#   measure: total_lifetime_orders {
-#     description: "Use this for counting lifetime orders across many users"
-#     type: sum
-#     sql: ${lifetime_orders} ;;
-#   }
-# }
+  dimension: mean_absolute_error {
+    type: number
+    sql: ${TABLE}.mean_absolute_error;;
+  }
+
+  dimension: mean_squared_error {
+    type: number
+    sql: ${TABLE}.mean_squared_error;;
+  }
+
+  dimension: mean_squared_log_error {
+    type: number
+    sql: ${TABLE}.mean_squared_log_error;;
+  }
+
+  dimension: median_absolute_error {
+    type: number
+    sql: ${TABLE}.median_absolute_error;;
+  }
+
+  dimension: r2_score {
+    type: number
+    sql: ${TABLE}.r2_score;;
+  }
+
+  dimension: explained_variance {
+    type: number
+    sql: ${TABLE}.explained_variance;;
+  }
+}

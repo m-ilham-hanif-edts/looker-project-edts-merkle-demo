@@ -26,3 +26,7 @@ explore: daily_trx_trend_value__model {
 explore: daily_trx_trend_value__prediction_result {
   from: daily_trx_trend_value__prediction_result
 }
+
+explore: daily_trx_trend_value__evaluation_result {
+  from: daily_trx_trend_value__evaluation_result
+}
