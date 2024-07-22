@@ -1,5 +1,5 @@
 
-view: daily_trx_trend_value {
+view: daily_trx_trend_value__dataset {
   sql_table_name: `ml.daily_trx_trend_value` ;;
 
   measure: count {

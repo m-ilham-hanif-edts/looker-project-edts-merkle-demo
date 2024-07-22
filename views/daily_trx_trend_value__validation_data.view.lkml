@@ -1,11 +1,11 @@
 
 view: daily_trx_trend_value__validation_data {
   derived_table: {
-    explore_source: daily_trx_trend_value {
+    explore_source: daily_trx_trend_value__dataset {
       column: dt {}
       column: value {}
       filters: [
-        daily_trx_trend_value.dt: "after 2019/01/01"
+        daily_trx_trend_value__dataset.dt: "after 2019/01/01"
       ]
     }
   }
